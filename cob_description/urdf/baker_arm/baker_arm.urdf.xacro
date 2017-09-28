@@ -34,7 +34,34 @@
       <axis xyz="0 0 1"/>
     </joint>
 
-    <link name="${prefix}prismatic_link">
+    <link name="${prefix}flange">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+            <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="${prefix}revolute_joint_1" type="revolute">
+      <limit effort="500" velocity="1050" lower="0" upper="4500" />
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}prismatic_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}link1">
       <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
