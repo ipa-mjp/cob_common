@@ -8,20 +8,20 @@
   <xacro:macro name="baker_robot" params="prefix">
 
     <link name="${prefix}base_link">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="2.0">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="200.0">
         <origin xyz="0 0 ${0.12/2}" rpy="0 0 0" />
       </xacro:cylinder_inertial>
       <visual>
         <origin xyz="0 0 0.8" rpy="0 0 0"/>
         <geometry>
-          <box size="0.01 0.1 1.6"/>
+          <box size="0.2 0.2 1.6"/>
         </geometry>
         <material name="grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.stl" />
+          <box size="0.2 0.2 1.6"/>
         </geometry>
       </collision>
     </link>
@@ -31,7 +31,7 @@
       <parent link="${prefix}base_link"/>
       <child link="${prefix}prismatic_link"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <axis xyz="1 0 0"/>
+      <axis xyz="0 0 1"/>
     </joint>
 
     <link name="${prefix}prismatic_link">
@@ -45,6 +45,12 @@
         </geometry>
         <material name="blue"/>
       </visual>
+            <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+        </geometry>
+      </collision>
     </link>
     	
     <xacro:baker_arm_transmission prefix="${prefix}" />
