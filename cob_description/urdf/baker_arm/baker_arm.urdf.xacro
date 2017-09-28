@@ -8,11 +8,11 @@
   <xacro:macro name="baker_robot" params="prefix">
 
     <link name="${prefix}base_link">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="200.0">
-        <origin xyz="0 0 ${0.12/2}" rpy="0 0 0" />
+      <xacro:cylinder_inertial radius="0.1" length="1.6" mass="2.0">
+        <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
       <visual>
-        <origin xyz="0 0 0.8" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <box size="0.2 0.2 1.6"/>
         </geometry>
@@ -35,13 +35,13 @@
     </joint>
 
     <link name="${prefix}prismatic_link">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="2.0">
-        <origin xyz="0 0 ${0.12/2}" rpy="0 0 0" />
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
       <visual>
-        <origin xyz="0.015 0 0.05" rpy="0 0 0"/>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.01 0.1 0.1"/>
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
         </geometry>
         <material name="blue"/>
       </visual>
