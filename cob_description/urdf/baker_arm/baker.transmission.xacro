@@ -5,10 +5,9 @@
 
     <transmission name="${prefix}prismatic_trans">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}shoulder_pan_joint">
+      <joint name="${prefix}prismatic_joint">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
         <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="${prefix}prismatic_motor">
         <mechanicalReduction>1</mechanicalReduction>
