@@ -29,7 +29,7 @@
     <joint name="${prefix}prismatic_joint" type="prismatic">
       <limit effort="500" velocity="1050" lower="0" upper="4500" />
       <parent link="${prefix}base_link"/>
-      <child link="${prefix}prismatic_link"/>
+      <child link="${prefix}flange"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
@@ -39,7 +39,7 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
       <visual>
-        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <origin xyz="0.103 0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
         </geometry>
@@ -55,8 +55,8 @@
     
     <joint name="${prefix}revolute_joint_1" type="revolute">
       <limit effort="500" velocity="1050" lower="0" upper="4500" />
-      <parent link="${prefix}base_link"/>
-      <child link="${prefix}prismatic_link"/>
+      <parent link="${prefix}flange"/>
+      <child link="${prefix}link1"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
