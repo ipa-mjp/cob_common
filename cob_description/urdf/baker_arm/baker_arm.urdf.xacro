@@ -7,30 +7,35 @@
 
   <xacro:macro name="baker_robot" params="prefix">
 
-    <link name="${prefix}base_link">
-      <xacro:cylinder_inertial radius="0.1" length="1.6" mass="2.0">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.2 0.2 1.6"/>
-        </geometry>
-        <material name="grey"/>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <box size="0.2 0.2 1.6"/>
-        </geometry>
-      </collision>
+	<link name="${prefix}base_link">
+	    <collision>
+	      <origin xyz="0 0 0.87" rpy="0 0 0"/>
+	      <geometry>
+	        <box size="0.08 0.08 1.74"/>
+	      </geometry>
+	    </collision>
+	    <visual>
+	      <origin xyz="0 0 0.87" rpy="0 0 0"/>
+	      <geometry>
+	        <box size="0.08 0.08 1.74"/>
+	      </geometry>
+	      <material name="blue"/>
+	    </visual>	
+	    <inertial>
+	      <origin xyz="0 0 0.87" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="1.0" ixy="0.0" ixz="0.0"
+	        iyy="1.0" iyz="0.0"
+	        izz="1.0"/>
+	    </inertial>
     </link>
-    
-    <joint name="${prefix}prismatic_joint" type="prismatic">
-      <limit effort="500" velocity="1050" lower="0" upper="4500" />
+
+    <joint name="${prefix}joint_1" type="prismatic">
+      <limit effort="500" velocity="0.15" lower="0" upper="0.7" />
       <parent link="${prefix}base_link"/>
       <child link="${prefix}flange"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0.041 0 0.7" rpy="0 0 ${M_PI}"/>
       <axis xyz="0 0 1"/>
     </joint>
 
@@ -39,25 +44,25 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
       <visual>
-        <origin xyz="0.103 0 0.0" rpy="0 0 0"/>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red2.STL" />
         </geometry>
         <material name="blue"/>
       </visual>
-            <collision>
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red2.STL" />
         </geometry>
       </collision>
     </link>
     
-    <joint name="${prefix}revolute_joint_1" type="revolute">
-      <limit effort="500" velocity="1050" lower="0" upper="4500" />
+    <joint name="${prefix}joint_2" type="revolute">
+      <limit effort="500" velocity="0.15" lower="-2.0" upper="2.0" />
       <parent link="${prefix}flange"/>
       <child link="${prefix}link1"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.103 0 0.001" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
 
@@ -68,28 +73,217 @@
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+          <mesh filename="package://cob_description/meshes/baker_arm/Link1_red2.STL" />
         </geometry>
         <material name="blue"/>
       </visual>
-            <collision>
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red.STL" />
+          <mesh filename="package://cob_description/meshes/baker_arm/Link1_red2.STL" />
         </geometry>
       </collision>
     </link>
-    	
+    
+    <joint name="${prefix}joint_3" type="revolute">
+      <limit effort="500" velocity="0.25" lower="-2.0" upper="2.0" />
+      <parent link="${prefix}link1"/>
+      <child link="${prefix}link2"/>
+      <origin xyz="-0.5 0 -0.001" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}link2">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Link2_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Link2_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="${prefix}joint_4" type="revolute">
+      <limit effort="500" velocity="0.25" lower="-2.0" upper="2.0" />
+      <parent link="${prefix}link2"/>
+      <child link="${prefix}link3"/>
+      <origin xyz="-0.5 0 0.001" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}link3">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Joint45_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Joint45_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="${prefix}joint_5" type="revolute">
+      <limit effort="500" velocity="0.25" lower="-${M_PI}" upper="${M_PI}" />
+      <parent link="${prefix}link3"/>
+      <child link="${prefix}gripper"/>
+      <origin xyz="-0.09 0 0.089" rpy="0 -${M_PI/2} 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}gripper">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Gripper_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Gripper_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <!--joint name="${prefix}big_finger_left_join" type="prismatic">
+      <limit effort="500" velocity="0.05" lower="0" upper="0.035" />
+      <parent link="${prefix}link4"/>
+      <child link="${prefix}big_finger_left"/>
+      <origin xyz="0 0 0.105" rpy="${M_PI/2} 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}big_finger_left">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+       
+    <joint name="${prefix}big_finger_right_join" type="prismatic">
+      <limit effort="500" velocity="0.05" lower="-0.035" upper="0" />
+      <parent link="${prefix}link4"/>
+      <child link="${prefix}big_finger_right"/>
+      <origin xyz="0 0 0.105" rpy="${M_PI/2} ${M_PI/2} 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}big_finger_right">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="${prefix}small_finger_left_join" type="revolute">
+      <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
+      <parent link="${prefix}big_finger_left"/>
+      <child link="${prefix}small_finger_left"/>
+      <origin xyz="0.015 0.07 0.005" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="${prefix}small_finger_left">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="${prefix}small_finger_right_join" type="revolute">
+      <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
+      <parent link="${prefix}big_finger_right"/>
+      <child link="${prefix}small_finger_right"/>
+      <origin xyz="-0.1 0 0" rpy="0 0 ${M_PI/2}"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}small_finger_right">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+      </collision>
+    </link-->
+    
+    
     <xacro:baker_arm_transmission prefix="${prefix}" />
     <xacro:baker_arm_gazebo prefix="${prefix}" />
 
   </xacro:macro>
 
-  <xacro:macro name="baker" params="parent name *origin">
+  <xacro:macro name="baker" params="parent name">
 
     <!-- mount the arm to the robot -->
     <joint name="${name}_base_joint" type="fixed" >
-      <xacro:insert_block name="origin" />
       <parent link="${parent}" />
       <child link="${name}_base_link" />
     </joint>
