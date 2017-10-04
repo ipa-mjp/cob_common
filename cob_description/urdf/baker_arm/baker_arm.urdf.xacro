@@ -6,6 +6,10 @@
   <xacro:include filename="$(find cob_description)/urdf/baker_arm/baker.gazebo.xacro" />
 
   <xacro:macro name="baker_robot" params="prefix">
+  
+    <material name="blue">
+      <color rgba="0.1 0.1 0.6 1"/>
+    </material>
 
 	<link name="${prefix}base_link">
 	    <collision>
