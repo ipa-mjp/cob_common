@@ -25,8 +25,8 @@
   <xacro:macro name="p_rob_arm" params="prefix
   		 joint1_lower_limit:=-2.9775317039023261	joint1_upper_limit:=2.9775317039023261		joint1_velocity_limit:=0.5
 		 joint2_lower_limit:=-1.9233528356977512	joint2_upper_limit:=1.9233528356977512		joint2_velocity_limit:=0.5
-		 joint3_lower_limit:=-3.14159265     		joint3_upper_limit:=3.14159265				joint3_velocity_limit:=0.5
-		 joint4_lower_limit:=-6.2831853				joint4_upper_limit:=2.981022362406315		joint4_velocity_limit:=0.5
+		 joint3_lower_limit:=-1.9233528356977512    joint3_upper_limit:=1.9233528356977512		joint3_velocity_limit:=0.5
+		 joint4_lower_limit:=-2.9880036794142919	joint4_upper_limit:=2.981022362406315		joint4_velocity_limit:=0.5
 		 joint5_lower_limit:=-2.0176006153054447	joint5_upper_limit:=2.0176006153054447		joint5_velocity_limit:=0.5
 		 joint6_lower_limit:=-2.9880036794142919	joint6_upper_limit:=2.9880036794142919		joint6_velocity_limit:=0.5
 		 gripper_lower_limit:=-2.9880036794142919	gripper_upper_limit:=2.9880036794142919		gripper_velocity_limit:=1.7453292519943295">
