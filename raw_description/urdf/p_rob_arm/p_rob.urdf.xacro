@@ -23,12 +23,12 @@
 
 
   <xacro:macro name="p_rob_arm" params="prefix
-  		 joint1_lower_limit:=-2.4	joint1_upper_limit:=2.4		joint1_velocity_limit:=0.5
-		 joint2_lower_limit:=-1.7	joint2_upper_limit:=1.7		joint2_velocity_limit:=0.5
-		 joint3_lower_limit:=-1.7   joint3_upper_limit:=1.7		joint3_velocity_limit:=0.5
-		 joint4_lower_limit:=-2.4	joint4_upper_limit:=2.4		joint4_velocity_limit:=0.5
+  		 joint1_lower_limit:=-2.44346	joint1_upper_limit:=2.44346		joint1_velocity_limit:=0.5
+		 joint2_lower_limit:=-1.9	joint2_upper_limit:=1.9		joint2_velocity_limit:=0.5
+		 joint3_lower_limit:=-1.9   joint3_upper_limit:=1.9		joint3_velocity_limit:=0.5
+		 joint4_lower_limit:=-2.82743	joint4_upper_limit:=2.82743		joint4_velocity_limit:=0.5
 		 joint5_lower_limit:=-1.9	joint5_upper_limit:=1.9		joint5_velocity_limit:=0.5
-		 joint6_lower_limit:=-2.4	joint6_upper_limit:=2.4		joint6_velocity_limit:=0.5
+		 joint6_lower_limit:=-2.86233	joint6_upper_limit:=2.86233		joint6_velocity_limit:=0.5
 		 gripper_lower_limit:=-2.4	gripper_upper_limit:=2.4	gripper_velocity_limit:=1.7453292519943295">
 
 
