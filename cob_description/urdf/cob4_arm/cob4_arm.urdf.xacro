@@ -80,7 +80,8 @@
       <child link="${name}_1_link" />
       <axis xyz="0 0 1"/>
       <dynamics damping="0" friction="0"/>
-      <limit effort="81.5" velocity="0.66" lower="${-4.71 + safety_offset}" upper="${4.71 - safety_offset}"/>   <!--Theoretical limit +/-270 , Real Limit +/- 270-->
+      <!--limit effort="81.5" velocity="0.66" lower="${-4.71 + safety_offset}" upper="${4.71 - safety_offset}"/>   <Theoretical limit +/-270 , Real Limit +/- 270-->
+      <limit effort="81.5" velocity="0.66" lower="${-1.60 + safety_offset}" upper="${1.60 - safety_offset}"/>   <!--Theoretical limit +/-270 , Real Limit +/- 270-->
       <!--safety_controller k_position="20" k_velocity="50" soft_lower_limit="${-M_PI + 0.01}" soft_upper_limit="${M_PI - 0.01}" /-->
     </joint>
 
