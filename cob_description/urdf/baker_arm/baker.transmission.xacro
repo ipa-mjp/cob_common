@@ -63,7 +63,7 @@
       </actuator>
     </transmission>
 
-    <transmission name="${prefix}big_finger_left_trans">
+    <!--transmission name="${prefix}big_finger_left_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}big_finger_left_join">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
@@ -75,7 +75,7 @@
       </actuator>
     </transmission>
 
-    <!--transmission name="${prefix}big_finger_right_trans">
+    <transmission name="${prefix}big_finger_right_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}big_finger_right_join">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
