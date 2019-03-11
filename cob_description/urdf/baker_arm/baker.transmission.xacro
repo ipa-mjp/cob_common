@@ -20,7 +20,7 @@
       <joint name="${prefix}joint_2">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
         <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <!--hardwareInterface>EffortJointInterface</hardwareInterface-->
       </joint>
       <actuator name="${prefix}motor_2">
         <mechanicalReduction>1</mechanicalReduction>

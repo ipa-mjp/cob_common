@@ -36,7 +36,7 @@
     </link>
 
     <joint name="${prefix}joint_1" type="prismatic">
-      <limit effort="500" velocity="0.15" lower="0" upper="0.7" />
+      <limit effort="500" velocity="0.015" lower="0" upper="0.7" />
       <parent link="${prefix}base_link"/>
       <child link="${prefix}flange"/>
       <origin xyz="0.041 0 0.7" rpy="0 0 ${M_PI}"/>
@@ -61,9 +61,9 @@
         </geometry>
       </collision>
     </link>
-    
+
     <joint name="${prefix}joint_2" type="revolute">
-      <limit effort="500" velocity="0.15" lower="-2.0" upper="2.0" />
+      <limit effort="500" velocity="0.015" lower="-2.0" upper="2.0" />
       <parent link="${prefix}flange"/>
       <child link="${prefix}link1"/>
       <origin xyz="-0.103 0 0.001" rpy="0 0 0"/>
@@ -88,9 +88,9 @@
         </geometry>
       </collision>
     </link>
-    
+
     <joint name="${prefix}joint_3" type="revolute">
-      <limit effort="500" velocity="0.25" lower="-2.0" upper="2.0" />
+      <limit effort="500" velocity="0.025" lower="-2.0" upper="2.0" />
       <parent link="${prefix}link1"/>
       <child link="${prefix}link2"/>
       <origin xyz="-0.5 0 -0.001" rpy="0 0 0"/>
@@ -115,9 +115,9 @@
         </geometry>
       </collision>
     </link>
-    
+
     <joint name="${prefix}joint_4" type="revolute">
-      <limit effort="500" velocity="0.25" lower="-2.0" upper="2.0" />
+      <limit effort="500" velocity="0.025" lower="-2.0" upper="2.0" />
       <parent link="${prefix}link2"/>
       <child link="${prefix}link3"/>
       <origin xyz="-0.5 0 0.001" rpy="0 0 0"/>
@@ -142,9 +142,9 @@
         </geometry>
       </collision>
     </link>
-    
+
     <joint name="${prefix}joint_5" type="revolute">
-      <limit effort="500" velocity="0.25" lower="-${M_PI}" upper="${M_PI}" />
+      <limit effort="500" velocity="0.025" lower="-${M_PI}" upper="${M_PI}" />
       <parent link="${prefix}link3"/>
       <child link="${prefix}gripper"/>
       <origin xyz="-0.09 0 0.089" rpy="0 -${M_PI/2} 0"/>
@@ -169,7 +169,7 @@
         </geometry>
       </collision>
     </link>
-    
+
     <!--joint name="${prefix}big_finger_left_join" type="prismatic">
       <limit effort="500" velocity="0.01" lower="0" upper="0.028" />
       <parent link="${prefix}gripper"/>
@@ -196,7 +196,7 @@
         </geometry>
       </collision>
     </link>
-       
+
     <joint name="${prefix}big_finger_right_join" type="prismatic">
       <limit effort="500" velocity="0.01" lower="-0.025" upper="0" />
       <parent link="${prefix}gripper"/>
@@ -223,7 +223,7 @@
         </geometry>
       </collision>
     </link>
-    
+
     <joint name="${prefix}small_finger_left_join" type="revolute">
       <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
       <parent link="${prefix}big_finger_left"/>
@@ -231,7 +231,7 @@
       <origin xyz="0.015 0.07 0.005" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
-    
+
     <link name="${prefix}small_finger_left">
       <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -250,7 +250,7 @@
         </geometry>
       </collision>
     </link>
-    
+
     <joint name="${prefix}small_finger_right_join" type="revolute">
       <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
       <parent link="${prefix}big_finger_right"/>
@@ -277,7 +277,7 @@
         </geometry>
       </collision>
     </link-->
-    
+
     
     <xacro:baker_arm_transmission prefix="${prefix}" />
     <xacro:baker_arm_gazebo prefix="${prefix}" />
