@@ -170,7 +170,7 @@
       </collision>
     </link>
 
-    <!--joint name="${prefix}big_finger_left_join" type="prismatic">
+    <joint name="${prefix}big_finger_left_join" type="prismatic">
       <limit effort="500" velocity="0.01" lower="0" upper="0.028" />
       <parent link="${prefix}gripper"/>
       <child link="${prefix}big_finger_left"/>
@@ -255,7 +255,8 @@
       <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
       <parent link="${prefix}big_finger_right"/>
       <child link="${prefix}small_finger_right"/>
-      <origin xyz="-0.1 0 0" rpy="0 0 ${M_PI/2}"/>
+      <!--origin xyz="-0.1 0 0" rpy="0 0 ${M_PI/2}"/-->
+      <origin xyz="-0.07 0.015 -0.005" rpy="0 0 ${M_PI/2}"/>
       <axis xyz="0 0 1"/>
     </joint>
 
@@ -276,7 +277,7 @@
           <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
         </geometry>
       </collision>
-    </link-->
+    </link>
 
     
     <xacro:baker_arm_transmission prefix="${prefix}" />
