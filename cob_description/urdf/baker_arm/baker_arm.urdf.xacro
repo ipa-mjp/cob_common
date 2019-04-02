@@ -152,9 +152,10 @@
     </joint>
 
     <link name="${prefix}gripper">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -179,9 +180,10 @@
     </joint>
 
     <link name="${prefix}big_finger_left">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -206,9 +208,10 @@
     </joint>
 
     <link name="${prefix}big_finger_right">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
@@ -233,9 +236,10 @@
     </joint>
 
     <link name="${prefix}small_finger_left">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -261,9 +265,10 @@
     </joint>
 
     <link name="${prefix}small_finger_right">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
