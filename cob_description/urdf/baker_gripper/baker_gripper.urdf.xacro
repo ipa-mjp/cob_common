@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find cob_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/baker_gripper/baker.transmission.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/baker_gripper/baker.gazebo.xacro" />
+
+  <xacro:macro name="baker_gripper" params="prefix">
+  
+    <link name="${prefix}base_link">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Gripper_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Gripper_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}big_finger_left_join" type="prismatic">
+      <limit effort="500" velocity="0.01" lower="0" upper="0.028" />
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}big_finger_left"/>
+      <origin xyz="0 0 0.105" rpy="${M_PI/2} 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}big_finger_left">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}big_finger_right_join" type="prismatic">
+      <limit effort="500" velocity="0.01" lower="-0.025" upper="0" />
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}big_finger_right"/>
+      <origin xyz="0 0 0.105" rpy="${M_PI/2} ${M_PI/2} 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}big_finger_right">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}small_finger_left_join" type="revolute">
+      <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
+      <parent link="${prefix}big_finger_left"/>
+      <child link="${prefix}small_finger_left"/>
+      <origin xyz="0.015 0.07 0.005" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}small_finger_left">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}small_finger_right_join" type="revolute">
+      <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
+      <parent link="${prefix}big_finger_right"/>
+      <child link="${prefix}small_finger_right"/>
+      <!--origin xyz="-0.1 0 0" rpy="0 0 ${M_PI/2}"/-->
+      <origin xyz="-0.07 0.015 -0.005" rpy="0 0 ${M_PI/2}"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}small_finger_right">
+      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    
+    <xacro:baker_gripper_transmission prefix="${prefix}" />
+    <xacro:baker_gripper_gazebo prefix="${prefix}" />
+
+  </xacro:macro>
+
+  <xacro:macro name="baker_arm_gripper" params="parent name">
+
+    <!-- mount the gripper to the robot -->
+    <joint name="${name}_base_joint" type="fixed" >
+      <parent link="${parent}" />
+      <child link="${name}_base_link" />
+    </joint>
+
+    <!-- include baker robot -->
+    <xacro:baker_gripper prefix="${name}_"/>
+
+    <!-- ros_control plugin -->
+    <gazebo>
+      <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
+        <robotNamespace>${name}</robotNamespace>
+        <filterJointsParam>joint_names</filterJointsParam>
+      </plugin>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
