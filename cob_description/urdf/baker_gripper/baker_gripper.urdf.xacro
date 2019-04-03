@@ -8,9 +8,10 @@
   <xacro:macro name="baker_gripper" params="prefix">
   
     <link name="${prefix}base_link">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -35,9 +36,10 @@
     </joint>
 
     <link name="${prefix}big_finger_left">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -62,9 +64,10 @@
     </joint>
 
     <link name="${prefix}big_finger_right">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
@@ -89,9 +92,10 @@
     </joint>
 
     <link name="${prefix}small_finger_left">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -117,9 +121,10 @@
     </joint>
 
     <link name="${prefix}small_finger_right">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
@@ -135,6 +140,21 @@
       </collision>
     </link>
 
+    <joint name="gripper_to_tcp" type="fixed">
+        <parent link="${parent}"/>
+        <child link="gripper"/>
+        <origin xyz="0.0 0.0 0.185" rpy="-1.57 -1.57 -1.57"/> # 0.175
+    </joint>
+
+    <link name="gripper">
+        <visual>
+            <xacro:sphere_geometry radius="0.01"/>
+            <material name="IPA/LightGrey" />
+        </visual>
+        <collision>
+            <xacro:sphere_geometry radius="0.01"/>
+        </collision>
+    </link>
     
     <xacro:baker_gripper_transmission prefix="${prefix}" />
     <xacro:baker_gripper_gazebo prefix="${prefix}" />

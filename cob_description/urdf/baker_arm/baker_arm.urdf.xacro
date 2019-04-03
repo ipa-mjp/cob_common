@@ -23,7 +23,7 @@
 	      <geometry>
 	        <box size="0.08 0.08 1.74"/>
 	      </geometry>
-	      <material name="blue"/>
+              <material name="IPA/LightGrey"/>
 	    </visual>	
 	    <inertial>
 	      <origin xyz="0 0 0.87" rpy="0 0 0"/>
@@ -44,15 +44,16 @@
     </joint>
 
     <link name="${prefix}flange">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Flange_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -71,15 +72,16 @@
     </joint>
 
     <link name="${prefix}link1">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Link1_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -98,15 +100,16 @@
     </joint>
 
     <link name="${prefix}link2">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Link2_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -125,15 +128,16 @@
     </joint>
 
     <link name="${prefix}link3">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Joint45_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -152,15 +156,16 @@
     </joint>
 
     <link name="${prefix}gripper">
-      <xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
       <visual>
         <origin xyz="0.0 0 0.0" rpy="0 0 -${M_PI/2}"/>
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Gripper_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -188,7 +193,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -215,7 +220,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -242,7 +247,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -270,7 +275,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL" />
         </geometry>
-        <material name="blue"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
