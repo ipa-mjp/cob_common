@@ -36,7 +36,7 @@
     </link>
 
     <joint name="${prefix}joint_1" type="prismatic">
-      <limit effort="500" velocity="0.015" lower="0" upper="0.7" />
+      <limit effort="500" velocity="0.15" lower="0" upper="0.7" />
       <parent link="${prefix}base_link"/>
       <child link="${prefix}flange"/>
       <origin xyz="0.041 0 0.7" rpy="0 0 ${M_PI}"/>
@@ -64,7 +64,7 @@
     </link>
 
     <joint name="${prefix}joint_2" type="revolute">
-      <limit effort="500" velocity="0.015" lower="-2.0" upper="2.0" />
+      <limit effort="500" velocity="0.15" lower="-2.0" upper="2.0" />
       <parent link="${prefix}flange"/>
       <child link="${prefix}link1"/>
       <origin xyz="-0.103 0 0.001" rpy="0 0 0"/>
@@ -92,7 +92,7 @@
     </link>
 
     <joint name="${prefix}joint_3" type="revolute">
-      <limit effort="500" velocity="0.025" lower="-2.0" upper="2.0" />
+      <limit effort="500" velocity="0.25" lower="-2.0" upper="2.0" />
       <parent link="${prefix}link1"/>
       <child link="${prefix}link2"/>
       <origin xyz="-0.5 0 -0.001" rpy="0 0 0"/>
@@ -120,7 +120,7 @@
     </link>
 
     <joint name="${prefix}joint_4" type="revolute">
-      <limit effort="500" velocity="0.025" lower="-2.0" upper="2.0" />
+      <limit effort="500" velocity="0.25" lower="-2.0" upper="2.0" />
       <parent link="${prefix}link2"/>
       <child link="${prefix}link3"/>
       <origin xyz="-0.5 0 0.001" rpy="0 0 0"/>
@@ -148,7 +148,7 @@
     </link>
 
     <joint name="${prefix}joint_5" type="revolute">
-      <limit effort="500" velocity="0.025" lower="-${M_PI}" upper="${M_PI}" />
+      <limit effort="500" velocity="0.25" lower="-${M_PI}" upper="${M_PI}" />
       <parent link="${prefix}link3"/>
       <child link="${prefix}gripper"/>
       <origin xyz="-0.09 0 0.089" rpy="0 -${M_PI/2} 0"/>
