@@ -36,7 +36,8 @@
     </link>
 
     <joint name="${prefix}joint_1" type="prismatic">
-      <limit effort="500" velocity="0.15" lower="0" upper="0.7" />
+      <!--limit effort="500" velocity="0.15" lower="-0.0" upper="0.7" /-->
+      <limit effort="500" velocity="0.15" lower="-0.4" upper="0.2" /> <!-- in meter -->
       <parent link="${prefix}base_link"/>
       <child link="${prefix}flange"/>
       <origin xyz="0.041 0 0.7" rpy="0 0 ${M_PI}"/>
