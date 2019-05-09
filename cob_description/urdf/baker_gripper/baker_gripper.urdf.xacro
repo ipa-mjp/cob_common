@@ -6,7 +6,7 @@
   <xacro:include filename="$(find cob_description)/urdf/baker_gripper/baker.gazebo.xacro" />
 
   <xacro:macro name="baker_gripper" params="prefix">
-  
+
     <link name="${prefix}base_link">
       <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -118,6 +118,7 @@
       <!--origin xyz="-0.1 0 0" rpy="0 0 ${M_PI/2}"/-->
       <origin xyz="-0.07 0.015 -0.005" rpy="0 0 ${M_PI/2}"/>
       <axis xyz="0 0 1"/>
+      <mimic joint="${prefix}small_finger_left_join"/>
     </joint>
 
     <link name="${prefix}small_finger_right">
@@ -155,7 +156,7 @@
             <xacro:sphere_geometry radius="0.01"/>
         </collision>
     </link>
-    
+
     <xacro:baker_gripper_transmission prefix="${prefix}" />
     <xacro:baker_gripper_gazebo prefix="${prefix}" />
 

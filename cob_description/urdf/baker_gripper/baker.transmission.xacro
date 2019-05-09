@@ -3,7 +3,7 @@
 
   <xacro:macro name="baker_gripper_transmission" params="prefix">
 
-    <!--transmission name="${prefix}big_finger_left_trans">
+    <transmission name="${prefix}big_finger_left_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}big_finger_left_join">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
@@ -25,7 +25,7 @@
       <actuator name="${prefix}big_finger_right_motor">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
-    </transmission-->
+    </transmission>
 
     <transmission name="${prefix}small_finger_left_trans">
       <type>transmission_interface/SimpleTransmission</type>
@@ -37,9 +37,15 @@
       <actuator name="${prefix}small_finger_left_motor">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
-    </transmission>   
-
-    <transmission name="${prefix}small_finger_right_trans">
+    </transmission>
+    <!-- loading plugin: mimic joints works in gazebo now -->
+    <plugin filename="libgazebo_ros_mimic_joint_plugin.so" name="${prefix}mimic_robotiq_85_1">
+        <joint>${prefix}small_finger_left_join</joint>
+        <mimicJoint>${prefix}small_finger_right_join</mimicJoint>
+        <!--multiplier>1.0</multiplier>
+        <offset>0.0</offset-->
+    </plugin>
+<!--    <transmission name="${prefix}small_finger_right_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}small_finger_right_join">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
@@ -50,7 +56,7 @@
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
-
+-->
   </xacro:macro>
 
 </robot>
