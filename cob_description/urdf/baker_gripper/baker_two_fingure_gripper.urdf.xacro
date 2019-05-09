@@ -12,8 +12,17 @@
             <child link="${prefix}gripper_base_link"/>
             <xacro:insert_block name="origin"/>
         </joint>
-
         <link name="${prefix}gripper_base_link">
+        <visual>
+            <xacro:sphere_geometry radius="0.00001"/>
+            <material name="IPA/LightGrey" />
+        </visual>
+        <collision>
+            <xacro:sphere_geometry radius="0.000001"/>
+        </collision>
+        </link>
+
+        <!--link name="${prefix}gripper_base_link">
             <visual>
                 <geometry>
                     <mesh filename="package://cob_description/meshes/baker_arm/Gripper_red2.STL"/>
@@ -25,14 +34,7 @@
                 </geometry>
             </collision>
             <xacro:default_inertial/>
-            <!--inertial>
-                <mass value="0.636951" />
-                <origin xyz="0.0 0.0 0.0" />
-                <inertia ixx = "0.000380" ixy = "0.000000" ixz = "0.000000"
-                         iyx = "0.000000" iyy = "0.001110" iyz = "0.000000"
-                         izx = "0.000000" izy = "0.000000" izz = "0.001171" />
-            </inertial-->
-        </link>
+        </link-->
 
         <!--gazebo reference="${prefix}gripper_base_link">
             <implicitSpringDamper>1</implicitSpringDamper>
@@ -42,20 +44,22 @@
             <kd>1.0</kd>
         </gazebo-->
 
-        <joint name="${prefix}gripper_finger1_joint" type="prismatic">
+        <joint name="${prefix}gripper_finger1_joint" type="prismatic"> <!-- left part -->
             <parent link="${prefix}gripper_base_link"/>
             <child link="${prefix}gripper_finger1_knuckle_link"/>
             <axis xyz="0 0 1"/>
-            <origin xyz="-0.05 0.06 0.065 " rpy="-${M_PI/2} 0 -${M_PI/2}"/>
+            <!--origin xyz="-0.05 0.06 0.065 " rpy="-${M_PI/2} 0 -${M_PI/2}"/-->
+            <origin xyz="-0.01 0 0.105" rpy="0 ${M_PI/2} ${M_PI}"/>
             <limit effort="500" velocity="0.02" lower="-0.25" upper="0.25" />
             <axis xyz="0 0 1"/>
         </joint>
 
-        <joint name="${prefix}gripper_finger2_joint" type="prismatic">
+        <joint name="${prefix}gripper_finger2_joint" type="prismatic"> <!-- right part -->
             <parent link="${prefix}gripper_base_link"/>
             <child link="${prefix}gripper_finger2_knuckle_link"/>
             <axis xyz="0 0 1"/>
-            <origin xyz="0.05 0.06 0.065 " rpy="-${M_PI/2} ${M_PI} ${M_PI/2}"/>
+            <!--origin xyz="0.05 0.06 0.065 " rpy="-${M_PI/2} ${M_PI} ${M_PI/2}"/-->
+            <origin xyz="0.01 0 0.105" rpy="-${M_PI/2} ${M_PI/2} ${M_PI/2}"/>
             <limit lower="-3.14" upper="3.14" velocity="0.02" effort="500"/>
             <mimic joint="${prefix}gripper_finger1_joint"/>
         </joint>
@@ -63,12 +67,12 @@
         <link name="${prefix}gripper_finger1_knuckle_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL"/>
+                    <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL"/>
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL"/>
+                    <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL"/>
                 </geometry>
             </collision>
             <!--inertial>
@@ -121,18 +125,18 @@
         <joint name="${prefix}gripper_finger1_finger_joint" type="revolute">
             <parent link="${prefix}gripper_finger1_knuckle_link"/>
             <child link="${prefix}gripper_finger1_finger_link"/>
-            <origin xyz="-0.07 0.015 -0.005" rpy="0 0 ${M_PI/2}"/>
+            <origin xyz="-0.07 0.015 0.005" rpy="0 0 0"/>
             <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
         </joint>
 
-        <!--joint name="${prefix}gripper_finger2_finger_joint" type="revolute">
+        <joint name="${prefix}gripper_finger2_finger_joint" type="revolute">
             <parent link="${prefix}gripper_finger2_knuckle_link"/>
             <child link="${prefix}gripper_finger2_finger_link"/>
-            <origin xyz="0.015 0.07 0.005" rpy="0 0 0"/>
+            <origin xyz="-0.07 0.015 -0.005" rpy="0 0 0"/>
             <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
             <mimic joint="${prefix}gripper_finger1_finger_joint"/>
         </joint>
-        -->
+
         <link name="${prefix}gripper_finger1_finger_link">
             <visual>
                 <geometry>
@@ -161,7 +165,7 @@
             <kp>100000000.0</kp>
             <kd>1.0</kd>
         </gazebo-->
-        <!--
+
         <link name="${prefix}gripper_finger2_finger_link">
             <visual>
                 <geometry>
@@ -173,15 +177,16 @@
                     <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL"/>
                 </geometry>
             </collision>
-            <inertial>
+            <!--inertial>
                 <mass value="0.027309" />
                 <origin xyz="0.0 0.0 0.0" />
                 <inertia ixx = "0.000003" ixy = "-0.000002" ixz = "0.000000"
                          iyx = "-0.000002" iyy = "0.000021" iyz = "0.000000"
                          izx = "0.000000" izy = "0.000000" izz = "0.000020" />
-            </inertial>
+            </inertial-->
+            <xacro:default_inertial/>
         </link>
-
+     <!--
         <gazebo reference="${prefix}gripper_finger2_finger_link">
             <implicitSpringDamper>1</implicitSpringDamper>
             <mu1>100000</mu1>
@@ -340,6 +345,21 @@
             <kd>1.0</kd>
         </gazebo>
 -->
+    <joint name="gripper_to_tcp" type="fixed">
+        <parent link="${prefix}gripper_base_link"/>
+        <child link="gripper"/>
+        <origin xyz="0.0 0.0 0.185" rpy="-1.57 -1.57 -1.57"/> # 0.175
+    </joint>
+
+    <link name="gripper">
+    <visual>
+        <xacro:sphere_geometry radius="0.01"/>
+        <material name="IPA/LightGrey" />
+    </visual>
+    <collision>
+        <xacro:sphere_geometry radius="0.01"/>
+    </collision>
+    </link>
 
     <xacro:baker_gripper_transmission prefix="${prefix}" />
     <xacro:baker_gripper_gazebo prefix="${prefix}" />
