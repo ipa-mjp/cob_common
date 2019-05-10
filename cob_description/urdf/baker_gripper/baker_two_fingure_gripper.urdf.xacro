@@ -69,6 +69,7 @@
                 <geometry>
                     <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_left_red2.STL"/>
                 </geometry>
+                <material name="IPA/LightGrey"/>
             </visual>
             <collision>
                 <geometry>
@@ -98,6 +99,7 @@
                 <geometry>
                     <mesh filename="package://cob_description/meshes/baker_arm/Bigfinger_right_red2.STL"/>
                 </geometry>
+                <material name="IPA/LightGrey"/>
             </visual>
             <collision>
                 <geometry>
@@ -142,6 +144,7 @@
                 <geometry>
                     <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL"/>
                 </geometry>
+                <material name="IPA/LightGrey"/>
             </visual>
             <collision>
                 <geometry>
@@ -171,6 +174,7 @@
                 <geometry>
                     <mesh filename="package://cob_description/meshes/baker_arm/Smallfinger_red2.STL"/>
                 </geometry>
+                <material name="IPA/LightGrey"/>
             </visual>
             <collision>
                 <geometry>
