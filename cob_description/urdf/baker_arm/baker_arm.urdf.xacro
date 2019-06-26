@@ -40,6 +40,9 @@
       <limit effort="0.015" velocity="0.015" lower="-0.1" upper="1.0" /> <!-- in meter -->
       <parent link="${prefix}base_link"/>
       <child link="${prefix}flange"/>
+      <!-- z:= -0.09 calculated with the same dimension as motor fitting into linear axis
+      making sure eef pose into rviz and manulally mesaured values remain same -->
+      <!--origin xyz="0.041 0 -0.09" rpy="0 0 ${M_PI}"/-->
       <origin xyz="0.041 0 0.285" rpy="0 0 ${M_PI}"/> <!-- with homing methods -->
       <!--origin xyz="0.041 0 0.285" rpy="0 0 ${M_PI}"/-->    <!-- without homing methods -->
       <axis xyz="0 0 1"/>
