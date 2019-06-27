@@ -8,111 +8,15 @@
       <joint name="${prefix}joint_1">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
         <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <!--hardwareInterface>EffortJointInterface</hardwareInterface-->
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="${prefix}motor_1">
         <mechanicalReduction>1</mechanicalReduction>
         <hardwareInterface>PositionJointInterface</hardwareInterface>
         <hardwareInterface>VelocityJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </actuator>
     </transmission>
-
-    <transmission name="${prefix}trans_2">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}joint_2">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <!--hardwareInterface>EffortJointInterface</hardwareInterface-->
-      </joint>
-      <actuator name="${prefix}motor_2">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-
-    <transmission name="${prefix}trans_3">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}joint_3">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}motor_3">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-
-    <transmission name="${prefix}trans_4">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}joint_4">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}motor_4">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-
-    <transmission name="${prefix}trans_5">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}joint_5">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}motor_5">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-    <!--
-    <transmission name="${prefix}big_finger_left_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}big_finger_left_join">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}big_finger_left_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-
-    <transmission name="${prefix}big_finger_right_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}big_finger_right_join">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}big_finger_right_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>    
-
-    <transmission name="${prefix}small_finger_left_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}small_finger_left_join">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}small_finger_left_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>   
-
-    <transmission name="${prefix}small_finger_right_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}small_finger_right_join">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}small_finger_right_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-    -->
   </xacro:macro>
 
 </robot>
