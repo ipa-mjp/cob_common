@@ -38,6 +38,8 @@
       </joint>
       <actuator name="${prefix}motor_3">
         <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>VelocityJointInterface</hardwareInterface>
       </actuator>
     </transmission>
 
@@ -50,6 +52,8 @@
       </joint>
       <actuator name="${prefix}motor_4">
         <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>VelocityJointInterface</hardwareInterface>
       </actuator>
     </transmission>
 
@@ -62,6 +66,8 @@
       </joint>
       <actuator name="${prefix}motor_5">
         <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>VelocityJointInterface</hardwareInterface>
       </actuator>
     </transmission>
     <!--
