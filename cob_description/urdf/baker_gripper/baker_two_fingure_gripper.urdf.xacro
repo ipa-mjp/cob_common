@@ -22,6 +22,34 @@
         </collision>
         </link>
 
+	<!-- camera mounting pose into gripper frame-->
+	<!--        
+	<joint name="${prefix}gripper_camera_joint" type="fixed">
+            <parent link="${prefix}gripper_base_link"/>
+            <child link="${prefix}gripper_camera_link"/>
+            <xacro:insert_block name="origin"/>
+	    <origin xyz=" 0.0 0.45 0.585" rpy="1.57079632679 1.57079632679 0"/>
+        </joint>
+        <link name="${prefix}gripper_camera_link">
+            <xacro:box_inertial x="0.002" y="0.04" z="0.26" mass="0.0057307">
+                <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            </xacro:box_inertial>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.09 0.03 0.04"/>
+                </geometry>
+                <material name="IPA/LightGrey" />
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.10 0.04 0.05"/>
+                </geometry>
+            </collision>
+        </link>
+	-->
+
         <!--link name="${prefix}gripper_base_link">
             <visual>
                 <geometry>
