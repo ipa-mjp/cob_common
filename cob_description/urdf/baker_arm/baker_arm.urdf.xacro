@@ -69,7 +69,7 @@
     </link>
 
     <joint name="${prefix}joint_2" type="revolute">
-      <limit effort="0.15" velocity="0.15" lower="-2.0" upper="2.0" />
+      <limit effort="0.15" velocity="0.15" lower="-1.57" upper="1.57" />
       <parent link="${prefix}flange"/>
       <child link="${prefix}link1"/>
       <!--origin xyz="-0.103 0 0.001" rpy="${M_PI} 0 0"/-->
@@ -98,7 +98,7 @@
     </link>
 
     <joint name="${prefix}joint_3" type="revolute">
-      <limit effort="0.15" velocity="0.15" lower="-2.0" upper="2.0" />
+      <limit effort="0.15" velocity="0.15" lower="-2.50" upper="2.50" />
       <parent link="${prefix}link1"/>
       <child link="${prefix}link2"/>
       <!--origin xyz="-0.5 0 -0.001" rpy="-${M_PI} 0 0"/-->
@@ -127,7 +127,7 @@
     </link>
 
     <joint name="${prefix}joint_4" type="revolute">
-      <limit effort="0.15" velocity="0.15" lower="-2.0" upper="2.0" />
+      <limit effort="0.15" velocity="0.15" lower="-2.5" upper="2.5" />
       <parent link="${prefix}link2"/>
       <child link="${prefix}link3"/>
       <!--origin xyz="-0.5 0 0.001" rpy="${M_PI} 0 0"/-->
