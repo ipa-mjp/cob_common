@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find cob_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/baker_arm_can0/baker.transmission.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/baker_arm_can0/baker.gazebo.xacro" />
+
+  <xacro:macro name="baker_robot" params="prefix">
+  
+    <material name="blue">
+      <color rgba="0.1 0.1 0.6 1"/>
+    </material>
+
+	<link name="${prefix}base_link">
+	    <collision>
+              <origin xyz="0 0 0.87" rpy="0 0 0"/>
+	      <geometry>
+	        <box size="0.08 0.08 1.74"/>
+	      </geometry>
+	    </collision>
+	    <visual>
+              <origin xyz="0 0 0.87" rpy="0 0 0"/>
+	      <geometry>
+	        <box size="0.08 0.08 1.74"/>
+	      </geometry>
+              <material name="IPA/LightGrey"/>
+	    </visual>	
+	    <inertial>
+              <origin xyz="0 0 0.87" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="1.0" ixy="0.0" ixz="0.0"
+	        iyy="1.0" iyz="0.0"
+	        izz="1.0"/>
+	    </inertial>
+    </link>
+
+    <joint name="${prefix}joint_1" type="prismatic">
+      <!--limit effort="500" velocity="0.15" lower="-0.0" upper="0.7" /-->
+      <limit effort="0.015" velocity="0.015" lower="-0.1" upper="1.0" /> <!-- in meter -->
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}flange"/>
+      <!-- z:= -0.09 calculated with the same dimension as motor fitting into linear axis
+      making sure eef pose into rviz and manulally mesaured values remain same -->
+      <!--origin xyz="0.041 0 -0.09" rpy="0 0 ${M_PI}"/-->
+      <origin xyz="0.041 0 0.285" rpy="0 0 ${M_PI}"/> <!-- with homing methods -->
+      <!--origin xyz="0.041 0 0.285" rpy="0 0 ${M_PI}"/-->    <!-- without homing methods -->
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}flange">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Flange_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}joint_2" type="revolute">
+      <limit effort="0.35" velocity="0.35" lower="-1.57" upper="1.57" />
+      <parent link="${prefix}flange"/>
+      <child link="${prefix}link1"/>
+      <!--origin xyz="-0.103 0 0.001" rpy="${M_PI} 0 0"/-->
+      <origin xyz="-0.103 0 0.001" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}link1">
+      <!--xacro:cylinder_inertial radius="0.056" length="0.12" mass="0.01">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:cylinder_inertial-->
+      <xacro:default_inertial/>
+      <visual>
+        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Link1_red2.STL" />
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cob_description/meshes/baker_arm/Link1_red2.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    
+    <xacro:baker_arm_can0_transmission prefix="${prefix}" />
+    <xacro:baker_arm_can0_gazebo prefix="${prefix}" />
+
+  </xacro:macro>
+
+  <xacro:macro name="baker_arm_can0" params="parent name">
+
+    <!-- mount the arm to the robot -->
+    <joint name="${name}_base_joint" type="fixed" >
+      <parent link="${parent}" />
+      <child link="${name}_base_link" />
+    </joint>
+
+    <!-- include baker robot -->
+    <xacro:baker_robot prefix="${name}_"/>
+
+    <!-- ros_control plugin -->
+    <gazebo>
+      <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
+        <robotNamespace>${name}</robotNamespace>
+        <filterJointsParam>joint_names</filterJointsParam>
+      </plugin>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
