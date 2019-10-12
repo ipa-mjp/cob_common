@@ -72,7 +72,7 @@
             <kd>1.0</kd>
         </gazebo-->
 
-        <joint name="${prefix}gripper_finger1_joint" type="prismatic"> <!-- left part -->
+        <joint name="${prefix}gripper_finger1_joint" type="fixed"> <!-- left part -->
             <parent link="${prefix}gripper_base_link"/>
             <child link="${prefix}gripper_finger1_knuckle_link"/>
             <axis xyz="0 0 1"/>
@@ -82,7 +82,7 @@
             <axis xyz="0 0 1"/>
         </joint>
 
-        <joint name="${prefix}gripper_finger2_joint" type="prismatic"> <!-- right part -->
+        <joint name="${prefix}gripper_finger2_joint" type="fixed"> <!-- right part -->
             <parent link="${prefix}gripper_base_link"/>
             <child link="${prefix}gripper_finger2_knuckle_link"/>
             <axis xyz="0 0 1"/>
@@ -152,14 +152,14 @@
             <kd>1.0</kd>
         </gazebo-->
 
-        <joint name="${prefix}gripper_finger1_finger_joint" type="revolute">
+        <joint name="${prefix}gripper_finger1_finger_joint" type="fixed">
             <parent link="${prefix}gripper_finger1_knuckle_link"/>
             <child link="${prefix}gripper_finger1_finger_link"/>
             <origin xyz="-0.07 0.015 0.005" rpy="0 0 0"/>
             <limit effort="500" velocity="0.5" lower="-2.0" upper="0" />
         </joint>
 
-        <joint name="${prefix}gripper_finger2_finger_joint" type="revolute">
+        <joint name="${prefix}gripper_finger2_finger_joint" type="fixed">
             <parent link="${prefix}gripper_finger2_knuckle_link"/>
             <child link="${prefix}gripper_finger2_finger_link"/>
             <origin xyz="-0.07 0.015 0.005" rpy="0 0 0"/>

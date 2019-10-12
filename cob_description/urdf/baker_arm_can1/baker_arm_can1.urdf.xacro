@@ -93,7 +93,8 @@
       </collision>
     </link>
 
-    <joint name="${prefix}joint_5" type="revolute">
+    <!--joint name="${prefix}joint_5" type="revolute"-->
+    <joint name="${prefix}joint_5" type="fixed">
       <limit effort="0.35" velocity="0.35" lower="-${M_PI}" upper="${M_PI}" />
       <parent link="${prefix}link3"/>
       <child link="${prefix}gripper"/>
