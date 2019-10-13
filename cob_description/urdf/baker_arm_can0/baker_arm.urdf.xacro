@@ -69,7 +69,8 @@
     </link>
 
     <joint name="${prefix}joint_2" type="revolute">
-      <limit effort="0.35" velocity="0.35" lower="-1.57" upper="1.57" />
+      <!--limit effort="0.35" velocity="0.35" lower="-1.57" upper="1.57" /--> <!-- simulaton limits-->
+      <limit effort="0.15" velocity="0.15" lower="-1.57" upper="1.57" /> <!-- real robot limits-->
       <parent link="${prefix}flange"/>
       <child link="${prefix}link1"/>
       <!--origin xyz="-0.103 0 0.001" rpy="${M_PI} 0 0"/-->
