@@ -276,16 +276,16 @@
 
   </xacro:macro>
   
-  
-  <xacro:macro name="p_rob" params="parent name *origin">
 
-	<!-- instantiate the arm -->
-	<xacro:p_rob_arm prefix=""/>
-    
+  <xacro:macro name="cob4_arm" params="parent name *origin">
+
+    <!-- instantiate the arm -->
+    <xacro:p_rob_arm prefix=""/>
+
     <!-- mount the arm on the parent link -->
-    <joint name="base_joint" type="fixed" >
+    <joint name="${name}_base_joint" type="fixed" >
       <parent link="${parent}" />
-      <child link="arm_base_link" />
+      <child link="${name}_base_link" />
       <xacro:insert_block name="origin" />
     </joint>
 
