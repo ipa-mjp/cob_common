@@ -1,0 +1,209 @@
+<?xml version="1.0" ?>
+<!-- This file is for PRob2 model B 24V -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find cob_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/cob4_prob_arm/cob4_prob_arm.gazebo.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/cob4_prob_arm/cob4_prob_arm.transmission.xacro" />
+
+  <xacro:macro name="cob4_prob_arm" params="name parent *origin simulation">
+
+    <!--
+     <xacro:macro name="cob4_prob_arm" params="name parent version *origin simulation">
+     <xacro:property name="config_path" value="'$(find cob_description)/config/${version}/config.yaml'"/>
+     <xacro:property name="parameters" value="${load_yaml(config_path)}"/
+    -->
+
+    <!--Currently, the joint velocity, computed by MoveIt! sometimes overshoots its limits, such that a safety margin is required.-->
+    <xacro:property name="velocity_margin" value="0.05"/>
+
+    <xacro:property name="pi" value="3.14159265359"/>
+
+    <joint name="${name}_joint1" type="revolute">
+      <insert_block name="origin"/>
+      <parent link="${parent}"/>
+      <child link="${name}_link12"/>
+      <limit effort="1.09" lower="-2.967059728" upper="2.967059728" velocity="0.872664626 * (1 - velocity_margin)" />
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${name}_link12">
+      <inertial>
+        <origin xyz="8.71294630254049E-05 0.277951295685675 -0.00113740271757783" rpy="0 0 0"/>
+        <mass value="3.652"/>
+        <inertia ixx="0.06656" ixy="0.00001" ixz="0.00001" iyy="0.06610" iyz="0.00952" izz="0.00760"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link12.STL"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link12.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint2" type="revolute">
+      <origin xyz="0 0 0.1505"/>
+      <parent link="${name}_link12"/>
+      <child link="${name}_link23"/>
+      <limit effort="1.09" lower="-1.919862177" upper="1.919862177" velocity="0.872664626 *(1 - velocity_margin)" />
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="${name}_link23">
+      <inertial>
+        <origin xyz="8.71294630254052E-05 0.000951295697065868 -0.00113740271757783"/>
+        <mass value="3.520"/>
+        <inertia ixx="0.18406" ixy="0.00002" ixz="-0.00008" iyy="0.18142" iyz="0.01932" izz="0.00841"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link23.STL"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link23.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint3" type="revolute">
+      <origin xyz="0 0 0.29"/>
+      <parent link="${name}_link23"/>
+      <child link="${name}_link34"/>
+      <limit effort="1.09" lower="-2.00712864" upper="2.00712864" velocity="0.872664626 *(1 - velocity_margin)" />
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="${name}_link34">
+      <inertial>
+        <origin xyz="8.71294630254052E-05 -0.313548704302934 -0.00113740271757783" rpy="0 0 0"/>
+        <mass value="1.626"/>
+        <inertia ixx="0.02372" ixy="-0.00002" ixz="0.00004" iyy="0.02243" iyz="0.00024" izz="0.0343"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link34.STL"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link34.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint4" type="revolute">
+      <origin xyz="0 0 0.1645"/>
+      <parent link="${name}_link34"/>
+      <child link="${name}_link45"/>
+      <limit effort="0.3275" lower="-2.967059728" upper="2.967059728" velocity="0.872664626 *(1 - velocity_margin)" />
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${name}_link45">
+      <inertial>
+        <origin xyz="8.71294630254052E-05 -0.313548704302934 -0.00113740271757783" rpy="0 0 0"/>
+        <mass value="1.516"/>
+        <inertia ixx="0.02488" ixy="0.00002" ixz="0.00003" iyy="0.02409" iyz="0.00398" izz="0.00272"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link45.STL"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link45.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint5" type="revolute">
+      <origin xyz="0 0 0.1455"/>
+      <parent link="${name}_link45"/>
+      <child link="${name}_link56"/>
+      <limit effort="0.3275" lower="-2.00712864" upper="2.00712864" velocity="0.872664626 *(1 - velocity_margin)" />
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="${name}_link56">
+      <inertial>
+        <origin xyz="-8.71294630254049E-05 -0.588048704302934 0.00113740271757783"/>
+        <mass value="1.417"/>
+        <inertia ixx="0.01351" ixy="-0.00002" ixz="-0.00003" iyy="0.01261" iyz="-0.00012" izz="0.00274"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link56.STL"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link56.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint6" type="revolute">
+      <origin xyz="0 0 0.129"/>
+      <parent link="${name}_link56"/>
+      <child link="${name}_link6G"/>
+      <limit effort="0.17932399999999998" lower="-2.967059728" upper="2.967059728" velocity="1.745329252 * (1 - velocity_margin)"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${name}_link6G">
+      <inertial>
+        <origin xyz="-0.00113740271757783 0.588048704302934 8.7129463025477E-05"/>
+        <mass value="0.435"/>
+        <inertia ixx="0.00079" ixy="0.00000" ixz="0.00000" iyy="0.00086" iyz="-0.00001" izz="0.00084"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link6G.STL"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/cob4_prob_arm/link6G.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_gripper_interface_joint" type="fixed">
+      <origin xyz="0 0 0.046"/>
+      <parent link="${name}_link6G"/>
+      <child link="${name}_gripper_interface_link"/>
+    </joint>
+
+    <link name="${name}_gripper_interface_link"/>
+
+    <!-- only add ros controller when simulation is running else, use controller from prob -->
+    <xacro:if value="${simulation}">
+        <!-- extensions -->
+        <xacro:cob4_prob_arm_gazebo name="${name}" />
+        <xacro:cob4_prob_arm_transmission name="${name}" />
+
+        <!-- ros_control plugin -->
+        <gazebo>
+          <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
+            <robotNamespace>${name}</robotNamespace>
+            <filterJointsParam>joint_names</filterJointsParam>
+          </plugin>
+        </gazebo>
+    </xacro:if>
+
+  </xacro:macro>
+
+</robot>

@@ -1,47 +1,41 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="cob4_arm_gazebo" params="name">
+  <xacro:macro name="cob4_prob_arm_gazebo" params="name">
 
     <gazebo reference="${name}_base_link">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
     </gazebo>
 
-    <gazebo reference="${name}_1_link">
+    <gazebo reference="${name}_link12">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
     </gazebo>
 
-    <gazebo reference="${name}_2_link">
+    <gazebo reference="${name}_link23">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
     </gazebo>
 
-    <gazebo reference="${name}_3_link">
+    <gazebo reference="${name}_link34">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
     </gazebo>
 
-    <gazebo reference="${name}_4_link">
+    <gazebo reference="${name}_link45">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
     </gazebo>
 
-    <gazebo reference="${name}_5_link">
+    <gazebo reference="${name}_link56">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
     </gazebo>
 
-    <gazebo reference="${name}_6_link">
+    <gazebo reference="${name}_link6G">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
-    </gazebo>
-
-    <gazebo reference="${name}_7_link">
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <material value="IPA/LightGrey" />
     </gazebo>
 
   </xacro:macro>
