@@ -20,7 +20,7 @@
     <xacro:property name="pi" value="3.14159265359"/>
 
     <joint name="${name}_joint1" type="revolute">
-      <insert_block name="origin"/>
+      <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
       <child link="${name}_link12"/>
       <limit effort="1.09" lower="-2.967059728" upper="2.967059728" velocity="0.829031395" />
