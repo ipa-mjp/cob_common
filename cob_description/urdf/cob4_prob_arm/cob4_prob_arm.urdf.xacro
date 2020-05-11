@@ -37,7 +37,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/cob4_prob_arm/link12.STL"/>
         </geometry>
-        <material name="white"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
@@ -64,7 +64,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/cob4_prob_arm/link23.STL"/>
         </geometry>
-        <material name="white"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
@@ -91,7 +91,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/cob4_prob_arm/link34.STL"/>
         </geometry>
-        <material name="white"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
@@ -118,7 +118,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/cob4_prob_arm/link45.STL"/>
         </geometry>
-        <material name="white"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
@@ -145,7 +145,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/cob4_prob_arm/link56.STL"/>
         </geometry>
-        <material name="white"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
@@ -172,7 +172,7 @@
         <geometry>
           <mesh filename="package://cob_description/meshes/cob4_prob_arm/link6G.STL"/>
         </geometry>
-        <material name="white"/>
+        <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
