@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="prob_gripper_transmission" params="name">
+
+    <transmission name="${name}_gripper_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${name}_gripper_joint">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <!--hardwareInterface>VelocityJointInterface</hardwareInterface-->
+      </joint>
+      <actuator name="${name}_gripper_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="${name}_passive_gripper_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${name}_passive_gripper_joint">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <!--hardwareInterface>VelocityJointInterface</hardwareInterface-->
+      </joint>
+      <actuator name="${name}_passive_gripper_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+  </xacro:macro>
+
+</robot>

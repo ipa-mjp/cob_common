@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find cob_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/cob4_prob_gripper/prob_gripper.gazebo.xacro" />
+  <xacro:include filename="$(find cob_description)/urdf/cob4_prob_gripper/prob_gripper.transmission.xacro" />
+
+  <xacro:macro name="prob_gripper" params="name parent *origin orientation simulation">
+
+    <xacro:macro name="connector_origin">
+      <xacro:if value="${orientation == 'up'}">
+        <origin xyz="-0.052 0 0.052" rpy="0 -1.57 3.14"/>
+      </xacro:if>
+      <xacro:if value="${orientation == 'side'}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:if>
+    </xacro:macro>
+
+    <joint name="${name}_back_cover_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${name}_back_cover"/>
+    </joint>
+
+    <link name="${name}_back_cover">
+      <inertial>
+        <origin xyz="2.24196111270369E-06 -0.00408460946644196 -0.0510660065280277"/>
+        <mass value="0.82454352978473"/>
+        <inertia ixx="0.00151927417232363" ixy="-3.02654547820246E-07" ixz="-4.4543064624827E-08" iyy="0.00163894166884312" iyz="-2.0883019834409E-05" izz="0.00153211830480003"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/back_cover.STL"/>
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/back_cover.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Main body of the gripper. -->
+    <joint name="${name}_p_grip_connector" type="fixed">
+      <xacro:connector_origin/>
+      <parent link="${parent}"/>
+      <child link="${name}_gripper_link"/>
+    </joint>
+
+    <link name="${name}_gripper_link">
+      <inertial>
+        <origin xyz="2.24196111270369E-06 -0.00408460946644196 -0.0510660065280277"/>
+        <mass value="0.82454352978473"/>
+        <inertia ixx="0.00151927417232363" ixy="-3.02654547820246E-07" ixz="-4.4543064624827E-08" iyy="0.00163894166884312" iyz="-2.0883019834409E-05" izz="0.00153211830480003"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/p_grip.STL"/>
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/p_grip.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- The left finger can be actuated via ROS. -->
+    <joint name="${name}_gripper_joint" type="revolute">
+      <origin xyz="0.0645 0 0.052" rpy="0 0 0"/>
+      <parent link="${name}_gripper_link"/>
+      <child link="${name}_left_finger"/>
+      <limit effort="0.11997" lower="0" upper="30.0" velocity="60.0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${name}_left_finger">
+      <visual>
+        <origin rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/finger.STL"/>
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+          <origin rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cob_description/meshes/finger.STL"/>
+          </geometry>
+        </collision>
+    </link>
+
+    <!-- The right finger simply mirrors the left one. -->
+    <joint name="${name}_passive_gripper_joint" type="revolute">
+      <mimic joint="${name}_gripper_joint" multiplier="-1" offset="0"/>
+      <origin xyz="0.0645 0 0.052" rpy="0 0 0"/>
+      <parent link="${name}_gripper_link"/>
+      <child link="${name}_right_finger"/>
+      <limit effort="1000.0" lower="0" upper="0.52" velocity="170"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${name}_right_finger">
+      <visual>
+        <origin rpy="${pi} 0 0"/>
+        <geometry>
+          <mesh filename="package://cob_description/meshes/finger.STL"/>
+        </geometry>
+        <material name="IPA/LightGrey"/>
+      </visual>
+      <collision>
+        <origin rpy="${pi} 0 0"/>
+        <geometry>
+          <mesh
+            filename="package://cob_description/meshes/finger.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+
+    <!-- The tool center point is used for kinematics and path planning. -->
+    <joint name="${name}_tcp_joint" type="fixed">
+      <origin xyz="0.189 0 0.052" rpy="0 0 0"/>
+      <parent link="${name}_gripper_link"/>
+      <child link="${name}_tcp_link"/>
+    </joint>
+
+    <link name="${name}_tcp_link" />
+
+
+    <!-- only add ros controller when simulation is running else, use controller from prob -->
+    <xacro:if value="${simulation}">
+        <!-- extensions -->
+        <xacro:prob_gripper_gazebo name="${name}" />
+        <xacro:prob_gripper_transmission name="${name}" />
+
+        <!-- ros_control plugin -->
+        <gazebo>
+          <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
+            <robotNamespace>${name}</robotNamespace>
+            <filterJointsParam>joint_names</filterJointsParam>
+          </plugin>
+        </gazebo>
+    </xacro:if>
+
+  </xacro:macro>
+
+</robot>
