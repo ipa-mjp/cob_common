@@ -29,13 +29,13 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://cob_description/meshes/back_cover.STL"/>
+          <mesh filename="package://cob_description/meshes/cob4_prob_gripper/back_cover.STL"/>
         </geometry>
         <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://cob_description/meshes/back_cover.STL"/>
+          <mesh filename="package://cob_description/meshes/cob4_prob_gripper/back_cover.STL"/>
         </geometry>
       </collision>
     </link>
@@ -55,13 +55,13 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://cob_description/meshes/p_grip.STL"/>
+          <mesh filename="package://cob_description/meshes/cob4_prob_gripper/p_grip.STL"/>
         </geometry>
         <material name="IPA/LightGrey"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://cob_description/meshes/p_grip.STL"/>
+          <mesh filename="package://cob_description/meshes/cob4_prob_gripper/p_grip.STL"/>
         </geometry>
       </collision>
     </link>
@@ -79,14 +79,14 @@
       <visual>
         <origin rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://cob_description/meshes/finger.STL"/>
+          <mesh filename="package://cob_description/meshes/cob4_prob_gripper/finger.STL"/>
         </geometry>
         <material name="IPA/LightGrey"/>
       </visual>
       <collision>
           <origin rpy="0 0 0"/>
           <geometry>
-            <mesh filename="package://cob_description/meshes/finger.STL"/>
+            <mesh filename="package://cob_description/meshes/cob4_prob_gripper/finger.STL"/>
           </geometry>
         </collision>
     </link>
@@ -105,7 +105,7 @@
       <visual>
         <origin rpy="${pi} 0 0"/>
         <geometry>
-          <mesh filename="package://cob_description/meshes/finger.STL"/>
+          <mesh filename="package://cob_description/meshes/cob4_prob_gripper/finger.STL"/>
         </geometry>
         <material name="IPA/LightGrey"/>
       </visual>
@@ -113,7 +113,7 @@
         <origin rpy="${pi} 0 0"/>
         <geometry>
           <mesh
-            filename="package://cob_description/meshes/finger.STL"/>
+            filename="package://cob_description/meshes/cob4_prob_gripper/finger.STL"/>
         </geometry>
       </collision>
     </link>
