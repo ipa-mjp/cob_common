@@ -2,6 +2,42 @@
 Changelog for package raw_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.2 (2020-03-18)
+------------------
+* Merge pull request `#281 <https://github.com/ipa320/cob_common/issues/281>`_ from ipa-jba/feature/raw-mini
+  Feature/raw mini
+* nitpick
+* remove unneeded values
+* add a planar move plugin for raw-mini (no mecanum)
+* use updated meshes
+* add a mecanum wheel (5cm wide 5cm radius)
+* Updated config for raw-mini
+* Added files for raw-mini
+* Merge pull request `#277 <https://github.com/ipa320/cob_common/issues/277>`_ from fmessmer/ci_updates
+  [travis] ci updates
+* catkin_lint fixes
+* Contributors: Felix Messmer, Jannik Abbenseth, flg-vs, fmessmer
+
+0.7.1 (2019-11-07)
+------------------
+
+0.7.0 (2019-08-06)
+------------------
+* Merge pull request `#271 <https://github.com/ipa320/cob_common/issues/271>`_ from benmaidel/feature/melodify
+  [Melodic]
+* more hardware_interface prefixing
+* added hardware_interface prefix for transmission (melodic's cob_gazebo_ros_control plugin expects it)
+* Contributors: Benjamin Maidel, Felix Messmer, fmessmer
+
+0.6.12 (2019-05-20)
+-------------------
+
+0.6.11 (2019-04-05)
+-------------------
+
+0.6.10 (2019-03-14)
+-------------------
+
 0.6.9 (2018-07-21)
 ------------------
 * fix syntax
